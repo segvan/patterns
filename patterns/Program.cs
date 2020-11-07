@@ -1,4 +1,5 @@
 ﻿using patterns.library.Builder;
+using patterns.library.Factory;
 using static System.Console;
 
 namespace patterns
@@ -8,9 +9,29 @@ namespace patterns
         static void Main(string[] args)
         {
             BuilderDemo();
+            FactoryDemo();
         }
-        
-        static void BuilderDemo()
+
+        private static void FactoryDemo()
+        {
+            // Factory method
+            var cartesianPoint = Point.FactoryMethodCartesianPoint(1, 1);
+            var polarPoint = Point.FactoryMethodPolarPoint(1, 1);
+            
+            // Factory
+            var cartesianPoint2 = PointFactory.NewCartesianPoint(1, 1);
+            var polarPoint2 = PointFactory.NewPolarPoint(1, 1);
+            
+            // Inner Factory
+            var cartesianPoint3 = Point3.Factory.NewCartesianPoint(1, 1);
+            var polarPoint3 = Point3.Factory.NewPolarPoint(1, 1);
+            
+            // Abstract Factory
+            var cartesianPoint4 = AbstractPointFactory.NewPoint(1, 1, PointType.Cartesian);
+            var polarPoint4 = AbstractPointFactory.NewPoint(1, 1, PointType.Polar);
+        }
+
+        private static void BuilderDemo()
         {
             // ordinary non-fluent builder
             var builder = new Builder("ul");
