@@ -1,5 +1,7 @@
 ﻿using patterns.library.Builder;
 using patterns.library.Factory;
+using patterns.library.Models;
+using patterns.library.Prototype;
 using static System.Console;
 
 namespace patterns
@@ -10,6 +12,17 @@ namespace patterns
         {
             BuilderDemo();
             FactoryDemo();
+            PrototypeDemo();
+        }
+
+        private static void PrototypeDemo()
+        {
+            var worker1 = new Worker("Person1", "Developer", new Office("Street", 123));
+            var worker2 = worker1.DeepCopy();
+            worker2.Name = "Person2";
+            worker2.Office.Number = 321;
+            WriteLine(worker1);
+            WriteLine(worker2);
         }
 
         private static void FactoryDemo()
