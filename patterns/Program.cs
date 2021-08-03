@@ -14,6 +14,10 @@ namespace patterns
             FactoryDemo();
             PrototypeDemo();
         }
+        
+        private static void AdapterDemo()
+        {
+        }
 
         private static void PrototypeDemo()
         {
