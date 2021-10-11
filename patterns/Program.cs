@@ -1,4 +1,5 @@
 ﻿using patterns.library.Builder;
+using patterns.library.Composite;
 using patterns.library.Factory;
 using patterns.library.Models;
 using patterns.library.Prototype;
@@ -10,13 +11,21 @@ namespace patterns
     {
         static void Main(string[] args)
         {
-            BuilderDemo();
-            FactoryDemo();
-            PrototypeDemo();
+            // BuilderDemo();
+            // FactoryDemo();
+            // PrototypeDemo();
+            CompositeDemo();
         }
-        
-        private static void AdapterDemo()
+
+        private static void CompositeDemo()
         {
+            GraphicObject root = new GraphicObject {Name = "Root"};
+            GraphicObject children = new GraphicObject();
+            children.AddChild(new Circle());
+            children.AddChild(new Square());
+            root.AddChild(children);
+            root.AddChild(new Circle());
+            WriteLine(root.ToString());
         }
 
         private static void PrototypeDemo()
@@ -34,15 +43,15 @@ namespace patterns
             // Factory method
             var cartesianPoint = Point.FactoryMethodCartesianPoint(1, 1);
             var polarPoint = Point.FactoryMethodPolarPoint(1, 1);
-            
+
             // Factory
             var cartesianPoint2 = PointFactory.NewCartesianPoint(1, 1);
             var polarPoint2 = PointFactory.NewPolarPoint(1, 1);
-            
+
             // Inner Factory
             var cartesianPoint3 = Point3.Factory.NewCartesianPoint(1, 1);
             var polarPoint3 = Point3.Factory.NewPolarPoint(1, 1);
-            
+
             // Abstract Factory
             var cartesianPoint4 = AbstractPointFactory.NewPoint(1, 1, PointType.Cartesian);
             var polarPoint4 = AbstractPointFactory.NewPoint(1, 1, PointType.Polar);
@@ -63,7 +72,7 @@ namespace patterns
                 .AddChildFluent("li", "world")
                 .Build();
             WriteLine(htmlElement);
-            
+
             // functional builder
             var person = new FunctionalBuilder()
                 .Called("Sergii")
