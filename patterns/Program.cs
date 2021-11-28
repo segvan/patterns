@@ -1,5 +1,6 @@
 ﻿using patterns.library.Builder;
 using patterns.library.Composite;
+using patterns.library.Decorator;
 using patterns.library.Factory;
 using patterns.library.Models;
 using patterns.library.Prototype;
@@ -14,7 +15,16 @@ namespace patterns
             // BuilderDemo();
             // FactoryDemo();
             // PrototypeDemo();
-            CompositeDemo();
+            //CompositeDemo();
+            DecoratorDemo();
+        }
+
+        private static void DecoratorDemo()
+        {
+            CodeBuilder cb = "class foo";
+                cb += "{";
+                cb.AppendLine("}");
+            WriteLine(cb.ToString());
         }
 
         private static void CompositeDemo()
